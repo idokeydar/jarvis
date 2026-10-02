@@ -1,0 +1,23 @@
+# Line endings, decided once so nobody has to think about them again.
+#
+# WHY THIS FILE EXISTS
+#     This project is developed on Windows and cloned on macOS and Linux. Without
+#     a rule, git stores whatever each editor happened to write, and a
+#     contributor whose editor normalises a file arrives with a pull request that
+#     claims to change every line of it. The real change is then invisible.
+#
+#     `text=auto` tells git to store text as LF in the repository and check it
+#     out in whatever the platform expects. Working copies stay native, history
+#     stays clean, and a one-line fix looks like a one-line fix.
+* text=auto
+
+# Binary, byte for byte: never touched.
+*.onnx     binary
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.ico      binary
+*.obj      binary
+*.wav      binary
+*.mp3      binary
+*.pdf      binary

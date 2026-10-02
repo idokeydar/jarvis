@@ -1,0 +1,97 @@
+# ── MARK LVI — what never belongs in the repository ────────────────────────────
+# Everything listed here is created by the app on first run. A fresh clone with
+# none of it present boots straight to the setup screen, which is the intended
+# first experience — so nothing here needs to be committed, and some of it must
+# never be.
+
+# ── Secrets. Committing any of these publishes them. ──────────────────────────
+config/api_keys.json          # your Gemini API key, plus per-plugin credentials
+config/api_keys.json.*        # its temporary and set-aside copies — same secrets
+config/certs/                 # the dashboard's TLS private key and certificate
+config/whatsapp_web/          # a LINKED WhatsApp session — committing it hands
+                              # somebody your WhatsApp account, not just a key
+**/token*.json                # Google OAuth tokens (Gmail / Calendar plugins)
+**/client_secret*.json        # Google OAuth client secrets
+*credentials*.json
+.env
+.env.*
+
+# ── Personal data the assistant accumulates about you ─────────────────────────
+memory/long_term.json
+memory/*.db
+
+# ── Per-machine caches plugins write beside their own data ────────────────────
+# These are learned from YOUR screen: which control on YOUR WhatsApp answers a
+# call, in YOUR language, in YOUR version of the app. Committing one does not
+# leak anything, but it does hand the next person indices that point at the
+# wrong buttons — so the cache is rebuilt locally, never shipped.
+memory/whatsapp_controls.json
+memory/steam_controls.json
+memory/*_cache.json
+# The screen agent's remembered plans. Same argument, one step further: these
+# name controls the way YOUR applications label them, in YOUR language, at YOUR
+# versions. They also record what you have asked it to do, which is nobody
+# else's business.
+memory/screen_recipes.json
+
+# ── Python build noise ────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Editors and operating systems ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Runtime output ────────────────────────────────────────────────────────────
+*.log
+logs/
+downloads/
+screenshots/
+
+# Downloaded Piper voices — 60 MB each, fetched on demand by the providers
+# panel. Never committed: they are assets, not source, and which ones you have
+# depends on which languages you speak.
+providers/voices/
+providers/__pycache__/
+
+# ── Working copies kept while a release is in progress ───────────────────────
+# Snapshots taken before a large edit, so a change can be compared or undone.
+# They are the PREVIOUS version of files that are already in the repository —
+# publishing them ships two copies of everything and invites somebody to read
+# the stale one.
+_backup/
+
+# ── Background tasks (core/tasks) — your tasks, their checkpoints and reports ─
+memory/tasks/
+reports/
+
+# ── Routines (core/routines) — your schedules, reminders and briefing settings ─
+memory/routines.json
+
+# ── Cloud agent (core/cloud.py) — created on the SERVER, never committed ──────
+# cloud_state holds the link secret and the certificate's private key; the
+# workspace holds whatever the agent and your phone put there.
+cloud_state/
+workspace/
+
+# Local secrets
+config/api_keys.json
+
+# Large local model (6.6 GB)
+fish-speech/
